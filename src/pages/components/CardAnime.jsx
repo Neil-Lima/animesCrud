@@ -1,37 +1,34 @@
-import { Box, Image, Badge, Heading } from "@chakra-ui/react";
-import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
-import Pagination from "react-bootstrap/Pagination";
-import { Button } from "react-bootstrap";
+import React from "react";
+import { Image, Badge, Box, Flex, IconButton, Button } from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import {Container, Pagination } from "react-bootstrap";
 
 const CardAnime = () => {
   return (
-    <Box mt="10px" maxWidth="400px">
-      <Box bg="white" p="11px" borderRadius="md" boxShadow="sm">
-        <Image src="/path/to/image" alt="CardAnime Image" w="100%" d="block" />
-        <Box margin="0px" p="10px">
-          <Badge bg="primary" color="white">
-            Categoria
-          </Badge>
-          <Heading size="md" mt="5px">
-            Título
-          </Heading>
-          <FaTrashAlt style={{ cursor: "pointer", marginRight: "6px", marginTop: "6px", color: "red" }} />
-          <FaPencilAlt style={{ cursor: "pointer", marginRight: "6px", marginTop: "6px", color: "green" }} />
-          <Button colorScheme="primary" mt="6px">
-            Mostrar Detalhes
-          </Button>
+    <Container>
+      <Box borderWidth="1px" rounded="md">
+        <Image src="https://exemplo.com/naruto.jpg" alt="Imagem do anime" w="100%" d="block" />
+        <Box>
+          <Badge colorScheme="blue">Categoria</Badge>
+          <h4 style={{ margin: "5px" }}>Título</h4>
+          <IconButton icon={<FontAwesomeIcon icon={faTrashAlt} />} colorScheme="red" mr={2} />
+          <IconButton icon={<FontAwesomeIcon icon={faPencilAlt} />} colorScheme="green" mr={2} />
+          <Button>Mostrar Detalhes</Button>
         </Box>
       </Box>
-      <Pagination className="mt-3 justify-content-center">
-        <Pagination.Prev>«</Pagination.Prev>
-        <Pagination.Item active>{1}</Pagination.Item>
-        <Pagination.Item>{2}</Pagination.Item>
-        <Pagination.Item>{3}</Pagination.Item>
-        <Pagination.Item>{4}</Pagination.Item>
-        <Pagination.Item>{5}</Pagination.Item>
-        <Pagination.Next>»</Pagination.Next>
-      </Pagination>
-    </Box>
+      <Flex justifyContent="center" mt={3}>
+        <Pagination>
+          <Pagination.Prev />
+          <Pagination.Item active>{1}</Pagination.Item>
+          <Pagination.Item>{2}</Pagination.Item>
+          <Pagination.Item>{3}</Pagination.Item>
+          <Pagination.Item>{4}</Pagination.Item>
+          <Pagination.Item>{5}</Pagination.Item>
+          <Pagination.Next />
+        </Pagination>
+      </Flex>
+    </Container>
   );
 };
 

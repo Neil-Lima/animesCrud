@@ -6,8 +6,8 @@ import CardAnime from '../components/CardAnime'
 function Home() {
   return (
    <>
-   <NavAnime/>
-   <FormAnime/>
+   <NavAnime/><br />
+   <FormAnime/><br />
    <CardAnime/>
    </>
   )

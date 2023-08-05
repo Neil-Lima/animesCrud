@@ -1,0 +1,164 @@
+{
+  "animes": [
+    {
+      "id": 1,
+      "titulo": "Naruto",
+      "imagem": "https://exemplo.com/naruto.jpg",
+      "ano": 2002,
+      "categoria": "Ação, Aventura, Shounen",
+      "criador": "Masashi Kishimoto"
+    },
+    {
+      "id": 2,
+      "titulo": "One Piece",
+      "imagem": "https://exemplo.com/one_piece.jpg",
+      "ano": 1999,
+      "categoria": "Ação, Aventura, Fantasia",
+      "criador": "Eiichiro Oda"
+    },
+    {
+      "id": 3,
+      "titulo": "Attack on Titan",
+      "imagem": "https://exemplo.com/aot.jpg",
+      "ano": 2013,
+      "categoria": "Ação, Drama, Fantasia",
+      "criador": "Hajime Isayama"
+    },
+    {
+      "id": 4,
+      "titulo": "Dragon Ball Z",
+      "imagem": "https://exemplo.com/dbz.jpg",
+      "ano": 1989,
+      "categoria": "Ação, Aventura, Fantasia",
+      "criador": "Akira Toriyama"
+    },
+    {
+      "id": 5,
+      "titulo": "Demon Slayer: Kimetsu no Yaiba",
+      "imagem": "https://exemplo.com/demon_slayer.jpg",
+      "ano": 2019,
+      "categoria": "Ação, Fantasia, Sobrenatural",
+      "criador": "Koyoharu Gotouge"
+    },
+    {
+      "id": 6,
+      "titulo": "Fullmetal Alchemist: Brotherhood",
+      "imagem": "https://exemplo.com/fma_brotherhood.jpg",
+      "ano": 2009,
+      "categoria": "Ação, Aventura, Fantasia",
+      "criador": "Hiromu Arakawa"
+    },
+    {
+      "id": 7,
+      "titulo": "My Hero Academia",
+      "imagem": "https://exemplo.com/my_hero_academia.jpg",
+      "ano": 2016,
+      "categoria": "Ação, Super Poderes, Escolar",
+      "criador": "Kohei Horikoshi"
+    },
+    {
+      "id": 8,
+      "titulo": "Sword Art Online",
+      "imagem": "https://exemplo.com/sao.jpg",
+      "ano": 2012,
+      "categoria": "Ação, Aventura, Fantasia",
+      "criador": "Reki Kawahara"
+    },
+    {
+      "id": 9,
+      "titulo": "Death Note",
+      "imagem": "https://exemplo.com/death_note.jpg",
+      "ano": 2006,
+      "categoria": "Mistério, Policial, Supernatural",
+      "criador": "Tsugumi Ohba, Takeshi Obata"
+    },
+    {
+      "id": 10,
+      "titulo": "Tokyo Ghoul",
+      "imagem": "https://exemplo.com/tokyo_ghoul.jpg",
+      "ano": 2014,
+      "categoria": "Ação, Drama, Terror",
+      "criador": "Sui Ishida"
+    },
+    {
+      "id": 11,
+      "titulo": "Hunter x Hunter",
+      "imagem": "https://exemplo.com/hunter_x_hunter.jpg",
+      "ano": 2011,
+      "categoria": "Ação, Aventura, Fantasia",
+      "criador": "Yoshihiro Togashi"
+    },
+    {
+      "id": 12,
+      "titulo": "One Punch Man",
+      "imagem": "https://exemplo.com/one_punch_man.jpg",
+      "ano": 2015,
+      "categoria": "Ação, Comédia, Paródia",
+      "criador": "ONE, Yusuke Murata"
+    },
+    {
+      "id": 13,
+      "titulo": "Neon Genesis Evangelion",
+      "imagem": "https://exemplo.com/neon_genesis_evangelion.jpg",
+      "ano": 1995,
+      "categoria": "Ação, Drama, Mecha",
+      "criador": "Hideaki Anno"
+    },
+    {
+      "id": 14,
+      "titulo": "Steins;Gate",
+      "imagem": "https://exemplo.com/steins_gate.jpg",
+      "ano": 2011,
+      "categoria": "Thriller, Ficção Científica",
+      "criador": "Chiyomaru Shikura"
+    },
+    {
+      "id": 15,
+      "titulo": "Cowboy Bebop",
+      "imagem": "https://exemplo.com/cowboy_bebop.jpg",
+      "ano": 1998,
+      "categoria": "Ação, Aventura, Drama",
+      "criador": "Shinichiro Watanabe"
+    },
+    {
+      "id": 16,
+      "titulo": "Fairy Tail",
+      "imagem": "https://exemplo.com/fairy_tail.jpg",
+      "ano": 2009,
+      "categoria": "Ação, Aventura, Fantasia",
+      "criador": "Hiro Mashima"
+    },
+    {
+      "id": 17,
+      "titulo": "Dragon Ball Super",
+      "imagem": "https://exemplo.com/dragon_ball_super.jpg",
+      "ano": 2015,
+      "categoria": "Ação, Aventura, Fantasia",
+      "criador": "Akira Toriyama"
+    },
+    {
+      "id": 18,
+      "titulo": "No Game No Life",
+      "imagem": "https://exemplo.com/no_game_no_life.jpg",
+      "ano": 2014,
+      "categoria": "Comédia, Ecchi, Fantasia",
+      "criador": "Yuu Kamiya"
+    },
+    {
+      "id": 19,
+      "titulo": "Bleach",
+      "imagem": "https://exemplo.com/bleach.jpg",
+      "ano": 2004,
+      "categoria": "Ação, Aventura, Super Poderes",
+      "criador": "Tite Kubo"
+    },
+    {
+      "id": 20,
+      "titulo": "Dragon Ball",
+      "imagem": "https://exemplo.com/dragon_ball.jpg",
+      "ano": 1986,
+      "categoria": "Ação, Aventura, Comédia",
+      "criador": "Akira Toriyama"
+    }
+  ]
+}
