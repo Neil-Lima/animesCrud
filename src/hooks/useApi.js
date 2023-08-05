@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const useApi = (url, itensPorPagina = 0) => {
   const [dados, setDados] = useState([]); // Armazena os dados obtidos da API
