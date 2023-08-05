@@ -12,7 +12,7 @@ const CardAnime = () => {
     erro,
     paginaAtual,
     totalPaginas,
-    irParaPagina,
+    paginacao,
     excluirItem,
     editarItem
   } = useApi("http://localhost:3333/animes", 6);
@@ -28,9 +28,9 @@ const CardAnime = () => {
           {dados.map((anime) => (
             <GridItem key={anime.id} borderWidth="1px" rounded="md">
               <Box>
-                <Image src={anime.imagem} alt={`Imagem do anime ${anime.titulo}`} w="100%" d="block" />
+                <Image src={anime.imagem} alt={`Imagem do anime ${anime.titulo}`} w="100%" height="250" d="block" />
                 <Box>
-                  <Badge colorScheme="blue">Categoria</Badge>
+                  <Badge colorScheme="blue">{anime.categoria}</Badge>
                   <h4 style={{ margin: "5px" }}>{anime.titulo}</h4>
                   <IconButton
                     icon={<FontAwesomeIcon icon={faTrashAlt} />}
@@ -44,7 +44,7 @@ const CardAnime = () => {
                     mr={2}
                     onClick={() => editarItem(anime)} // Implemente a função editarItem, se necessário
                   />
-                  <Button>Mostrar Detalhes</Button>
+                  <Button colorScheme="blue">Mostrar Detalhes</Button>
                 </Box>
               </Box>
             </GridItem>
@@ -52,12 +52,14 @@ const CardAnime = () => {
         </Grid>
       )}
       <Flex justifyContent="center" mt={3}>
-        <Pagination>          
+        <Pagination>
+          <Pagination.Prev disabled={paginaAtual === 1} onClick={() => paginacao(paginaAtual - 1)}/>
           {Array.from({ length: totalPaginas }, (_, index) => (
-            <Pagination.Item key={index + 1} active={index + 1 === paginaAtual} onClick={() => irParaPagina(index + 1)}>
+            <Pagination.Item key={index + 1} active={index + 1 === paginaAtual} onClick={() => paginacao(index + 1)}>
               {index + 1}
             </Pagination.Item>
-          ))}          
+          ))}
+          <Pagination.Next disabled={paginaAtual === totalPaginas} onClick={() => paginacao(paginaAtual + 1)}/>
         </Pagination>
       </Flex>
     </Container>

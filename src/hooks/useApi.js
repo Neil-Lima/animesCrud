@@ -55,7 +55,7 @@ const useApi = (url, itensPorPagina = 0) => {
   }, [url, itensPorPagina, paginaAtual]);
 
   // Função para navegar para uma página específica dos dados
-  const irParaPagina = (numeroPagina) => {
+  const paginacao = (numeroPagina) => {
     if (numeroPagina >= 1 && numeroPagina <= totalPaginas) {
       setPaginaAtual(numeroPagina); // Define a página atual com base no número fornecido, desde que esteja dentro do intervalo válido
     }
@@ -218,7 +218,7 @@ const useApi = (url, itensPorPagina = 0) => {
     erro,
     paginaAtual,
     totalPaginas,
-    irParaPagina,
+    paginacao,
     excluirItem,
     valoresCamposAdicionar,
     adicionarCampo,

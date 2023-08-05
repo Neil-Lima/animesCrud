@@ -3,7 +3,7 @@
     {
       "id": 1,
       "titulo": "Naruto",
-      "imagem": "https://exemplo.com/naruto.jpg",
+      "imagem": "https://criticalhits.com.br/wp-content/uploads/2021/05/naruto-uzumaki_qabz.png",
       "ano": 2002,
       "categoria": "Ação, Aventura, Shounen",
       "criador": "Masashi Kishimoto"
@@ -11,7 +11,7 @@
     {
       "id": 2,
       "titulo": "One Piece",
-      "imagem": "https://exemplo.com/one_piece.jpg",
+      "imagem": "https://classic.exame.com/wp-content/uploads/2022/08/one-piece.jpg?quality=70&strip=info&w=1200",
       "ano": 1999,
       "categoria": "Ação, Aventura, Fantasia",
       "criador": "Eiichiro Oda"
@@ -19,7 +19,7 @@
     {
       "id": 3,
       "titulo": "Attack on Titan",
-      "imagem": "https://exemplo.com/aot.jpg",
+      "imagem": "https://store-images.s-microsoft.com/image/apps.50874.68142772876284446.19495189-b6e8-4dd8-aaa7-8625b65929ed.a82d5e47-53e1-4731-8123-42382c069b76?q=90&w=480&h=270",
       "ano": 2013,
       "categoria": "Ação, Drama, Fantasia",
       "criador": "Hajime Isayama"
@@ -27,7 +27,7 @@
     {
       "id": 4,
       "titulo": "Dragon Ball Z",
-      "imagem": "https://exemplo.com/dbz.jpg",
+      "imagem": "https://jpimg.com.br/uploads/2018/04/dragon-ball-z.jpg",
       "ano": 1989,
       "categoria": "Ação, Aventura, Fantasia",
       "criador": "Akira Toriyama"
@@ -35,7 +35,7 @@
     {
       "id": 5,
       "titulo": "Demon Slayer: Kimetsu no Yaiba",
-      "imagem": "https://exemplo.com/demon_slayer.jpg",
+      "imagem": "https://s2-techtudo.glbimg.com/cI-azLksn8dQrIUTFftf_IMMbSE=/0x0:1280x720/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2023/J/8/EbfA0BTv2pV98gASWdfA/f5d0f04e85a224493fe9caa2e59740811630901421-main.png",
       "ano": 2019,
       "categoria": "Ação, Fantasia, Sobrenatural",
       "criador": "Koyoharu Gotouge"
@@ -43,7 +43,7 @@
     {
       "id": 6,
       "titulo": "Fullmetal Alchemist: Brotherhood",
-      "imagem": "https://exemplo.com/fma_brotherhood.jpg",
+      "imagem": "https://conteudo.imguol.com.br/c/entretenimento/8e/2017/04/29/fullmetal-alchemist-brotherhood-1493483022388_v2_1170x540.jpg",
       "ano": 2009,
       "categoria": "Ação, Aventura, Fantasia",
       "criador": "Hiromu Arakawa"
