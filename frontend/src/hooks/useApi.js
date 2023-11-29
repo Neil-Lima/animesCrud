@@ -224,7 +224,7 @@ const useApi = (url, itensPorPagina = 0) => {
     adicionarCampo,
     atualizarValorCampo,
     AdicionarForm,
-    exibindoMensagemEditar, // Novo estado para controlar a exibição da mensagem de "Editado com sucesso"
+    exibindoMensagemEditar, 
     editarItem,
     itemEditando,
     salvarItemEditado,
