@@ -19,7 +19,7 @@ const CardAnime = () => {
   // Obtém a página inicial armazenada localmente ou define como 1
   const paginaInicial = parseInt(localStorage.getItem("paginaAtual")) || 1;
 
-  // Utiliza o hook useApi para obter dados da API
+  // Utiliza o hook useApi para obter dados da api
   const {
     dados,
     carregando,
