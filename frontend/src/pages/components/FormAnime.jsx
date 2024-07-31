@@ -1,29 +1,52 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Box, Grid, Input, Button, Alert, AlertIcon } from "@chakra-ui/react";
-import useApi from '../../hooks/useApi';
 
 const FormAnime = () => {
-  const apiUrl = 'http://localhost:3334/api/animes';
-  const { AdicionarForm, atualizarValorCampo, valoresCamposAdicionar, mensagemAdicionar, buscarDados } = useApi(apiUrl);
+  const [formData, setFormData] = useState({
+    titulo: '',
+    imagem: '',
+    categoria: '',
+    criador: '',
+    ano: ''
+  });
+  const [mensagem, setMensagem] = useState('');
   const [alertVisible, setAlertVisible] = useState(false);
 
-  useEffect(() => {
-    if (mensagemAdicionar) {
-      setAlertVisible(true);
-      setTimeout(() => {
-        setAlertVisible(false);
-      }, 5000);
-    }
-  }, [mensagemAdicionar]);
-
-  const handleInputChange = (nomeCampo, valorCampo) => {
-    atualizarValorCampo(nomeCampo, valorCampo);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
   const handleAdicionarClick = async () => {
-    await AdicionarForm();
-    buscarDados(); // Atualiza a lista após adicionar um item
+    try {
+      const response = await axios.post('http://localhost:3334/api/animes', formData);
+      setMensagem('Anime adicionado com sucesso!');
+      setAlertVisible(true);
+      setFormData({
+        titulo: '',
+        imagem: '',
+        categoria: '',
+        criador: '',
+        ano: ''
+      });
+    } catch (error) {
+      setMensagem('Erro ao adicionar anime: ' + error.message);
+      setAlertVisible(true);
+    }
   };
+
+  useEffect(() => {
+    if (alertVisible) {
+      const timer = setTimeout(() => {
+        setAlertVisible(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [alertVisible]);
 
   return (
     <Box className="container" style={{ marginTop: "10px", padding: "20px" }}>
@@ -33,37 +56,42 @@ const FormAnime = () => {
             variant="filled"
             placeholder="Titulo"
             bg="#dce0e1"
-            value={valoresCamposAdicionar.titulo || ''}
-            onChange={(e) => handleInputChange('titulo', e.target.value)}
+            name="titulo"
+            value={formData.titulo}
+            onChange={handleInputChange}
           />
           <Input
             variant="filled"
             placeholder="Imagem"
             bg="#dce0e1"
-            value={valoresCamposAdicionar.imagem || ''}
-            onChange={(e) => handleInputChange('imagem', e.target.value)}
+            name="imagem"
+            value={formData.imagem}
+            onChange={handleInputChange}
           />
           <Input
             variant="filled"
             placeholder="Categoria"
             bg="#dce0e1"
-            value={valoresCamposAdicionar.categoria || ''}
-            onChange={(e) => handleInputChange('categoria', e.target.value)}
+            name="categoria"
+            value={formData.categoria}
+            onChange={handleInputChange}
           />
           <Input
             variant="filled"
             placeholder="Criador"
             bg="#dce0e1"
-            value={valoresCamposAdicionar.criador || ''}
-            onChange={(e) => handleInputChange('criador', e.target.value)}
+            name="criador"
+            value={formData.criador}
+            onChange={handleInputChange}
           />
           <Input
             variant="filled"
             type="number"
             placeholder="Ano"
             bg="#dce0e1"
-            value={valoresCamposAdicionar.ano || ''}
-            onChange={(e) => handleInputChange('ano', e.target.value)}
+            name="ano"
+            value={formData.ano}
+            onChange={handleInputChange}
           />
         </Grid>
       </form>
@@ -71,9 +99,9 @@ const FormAnime = () => {
         Adicionar
       </Button>
       {alertVisible && (
-        <Alert status="success" mt="4">
+        <Alert status={mensagem.includes('Erro') ? "error" : "success"} mt="4">
           <AlertIcon />
-          {mensagemAdicionar}
+          {mensagem}
         </Alert>
       )}
     </Box>
