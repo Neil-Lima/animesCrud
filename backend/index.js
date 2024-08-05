@@ -9,21 +9,21 @@ const PORT = process.env.PORT || 3334;
 
 connectDB();
 
-const corsOptions = {
+app.use(cors({
   origin: ['http://localhost:3000', 'https://animescrud.netlify.app', 'https://animes-crud.vercel.app'],
-  optionsSuccessStatus: 200
-};
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
-app.use(cors(corsOptions));
 app.use(express.json());
 
-// Welcome route
+// Rota de boas-vindas
 app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to the Anime API!' });
+  res.json({ message: 'Bem-vindo à API de Animes!' });
 });
 
 app.use('/api', animeRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
