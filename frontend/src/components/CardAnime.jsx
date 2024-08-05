@@ -7,13 +7,13 @@ import {
   Flex,
   IconButton,
   Button,
-  Grid,
-  GridItem,
+  SimpleGrid,
   Input,
+  Container,
 } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
-import { Container, Pagination } from "react-bootstrap";
+import { Pagination } from "react-bootstrap";
 
 const CardAnime = ({ refreshTrigger }) => {
   const [dados, setDados] = useState([]);
@@ -79,92 +79,90 @@ const CardAnime = ({ refreshTrigger }) => {
   };
 
   return (
-    <Container>
+    <Container maxWidth="container.xl">
       {carregando ? (
         <p>Carregando...</p>
       ) : erro ? (
         <p>Ocorreu um erro ao carregar os dados.</p>
       ) : (
-        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+        <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={6}>
           {dados.map((anime) => (
-            <GridItem key={anime._id} borderWidth="1px" rounded="md">
-              <Box>
-                <Image src={anime.imagem} alt={`Imagem do anime ${anime.titulo}`} w="100%" height="250" d="block" />
-                <Box>
-                  <Badge colorScheme="blue">{anime.categoria}</Badge>
-                  {editando && itemEditando?._id === anime._id ? (
-                    <>
-                      <Input
-                        type="text"
-                        value={itemEditando?.titulo || ""}
-                        onChange={handleInputChange}
-                        name="titulo"
-                        placeholder="Novo título"
-                      />
-                      <Input
-                        type="text"
-                        value={itemEditando?.imagem || ""}
-                        onChange={handleInputChange}
-                        name="imagem"
-                        placeholder="Nova imagem"
-                      />
-                      <Input
-                        type="text"
-                        value={itemEditando?.categoria || ""}
-                        onChange={handleInputChange}
-                        name="categoria"
-                        placeholder="Nova categoria"
-                      />
-                      <Input
-                        type="text"
-                        value={itemEditando?.criador || ""}
-                        onChange={handleInputChange}
-                        name="criador"
-                        placeholder="Novo criador"
-                      />
-                      <Input
-                        type="number"
-                        value={itemEditando?.ano || ""}
-                        onChange={handleInputChange}
-                        name="ano"
-                        placeholder="Novo ano"
-                      />
-                      <Button
-                        colorScheme="green"
-                        mr={2}
-                        onClick={salvarItemEditado}
-                      >
-                        Salvar
-                      </Button>
-                      <Button colorScheme="red" onClick={cancelarEdicao}>
-                        Cancelar
-                      </Button>
-                    </>
-                  ) : (
-                    <>
-                      <h4 style={{ margin: "5px" }}>{anime.titulo}</h4>
+            <Box key={anime._id} borderWidth="1px" borderRadius="lg" overflow="hidden">
+              <Image 
+                src={anime.imagem} 
+                alt={`Imagem do anime ${anime.titulo}`} 
+                width="100%" 
+                height={{ base: "200px", md: "250px" }} 
+                objectFit="cover"
+              />
+              <Box padding={4}>
+                <Badge colorScheme="blue" marginBottom={2}>{anime.categoria}</Badge>
+                {editando && itemEditando?._id === anime._id ? (
+                  <Flex direction="column" gap={2}>
+                    <Input
+                      value={itemEditando?.titulo || ""}
+                      onChange={handleInputChange}
+                      name="titulo"
+                      placeholder="Novo título"
+                    />
+                    <Input
+                      value={itemEditando?.imagem || ""}
+                      onChange={handleInputChange}
+                      name="imagem"
+                      placeholder="Nova imagem"
+                    />
+                    <Input
+                      value={itemEditando?.categoria || ""}
+                      onChange={handleInputChange}
+                      name="categoria"
+                      placeholder="Nova categoria"
+                    />
+                    <Input
+                      value={itemEditando?.criador || ""}
+                      onChange={handleInputChange}
+                      name="criador"
+                      placeholder="Novo criador"
+                    />
+                    <Input
+                      type="number"
+                      value={itemEditando?.ano || ""}
+                      onChange={handleInputChange}
+                      name="ano"
+                      placeholder="Novo ano"
+                    />
+                    <Button colorScheme="green" onClick={salvarItemEditado}>Salvar</Button>
+                    <Button colorScheme="red" onClick={cancelarEdicao}>Cancelar</Button>
+                  </Flex>
+                ) : (
+                  <Flex direction="column" gap={2}>
+                    <Box fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
+                      {anime.titulo}
+                    </Box>
+                    <Flex>
                       <IconButton
                         icon={<FontAwesomeIcon icon={faTrashAlt} />}
                         colorScheme="red"
-                        mr={2}
+                        marginRight={2}
                         onClick={() => excluirItem(anime._id)}
+                        size="sm"
                       />
                       <IconButton
                         icon={<FontAwesomeIcon icon={faPencilAlt} />}
                         colorScheme="green"
-                        mr={2}
+                        marginRight={2}
                         onClick={() => editarItem(anime)}
+                        size="sm"
                       />
-                      <Button colorScheme="blue">Mostrar Detalhes</Button>
-                    </>
-                  )}
-                </Box>
+                      <Button colorScheme="blue" size="sm">Mostrar Detalhes</Button>
+                    </Flex>
+                  </Flex>
+                )}
               </Box>
-            </GridItem>
+            </Box>
           ))}
-        </Grid>
+        </SimpleGrid>
       )}
-      <Flex justifyContent="center" mt={3}>
+      <Flex justifyContent="center" marginTop={6}>
         <Pagination>
           <Pagination.Prev disabled={paginaAtual === 1} onClick={() => setPaginaAtual(paginaAtual - 1)} />
           {Array.from({ length: totalPaginas }, (_, index) => (
