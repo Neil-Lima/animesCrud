@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   if (!process.env.MONGODB_URI) {
-    console.error('MONGODB_URI não está definido nas variáveis de ambiente');
+    console.error('MONGODB_URI não está definido nas variáveis de ambientes');
     process.exit(1);
   }
 
