@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import NavAnime from '../components/NavAnime'
-import FormAnime from '../components/FormAnime'
-import CardAnime from '../components/CardAnime'
+import NavAnime from '../../components/NavAnime'
+import FormAnime from '../../components/FormAnime'
+import CardAnime from '../../components/CardAnime'
 
 function Home() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
