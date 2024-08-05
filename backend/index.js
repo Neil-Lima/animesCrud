@@ -1,19 +1,29 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const animeRoutes = require('./routes/animeRoutes');
-const seedDatabase = require('./config/seedDatabase');
+const connectDB = require('./src/config/database');
+const animeRoutes = require('./src/routes/animeRoutes');
 
 const app = express();
-const port = process.env.PORT || 3334;
+const PORT = process.env.PORT || 3334;
 
-app.use(cors());
+connectDB();
+
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://seu-app-react.netlify.app'],
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
-// Seed the database
-seedDatabase();
+// Rota de boas-vindas
+app.get('/', (req, res) => {
+  res.json({ message: 'Bem-vindo à API de Animes!' });
+});
 
 app.use('/api', animeRoutes);
 
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
