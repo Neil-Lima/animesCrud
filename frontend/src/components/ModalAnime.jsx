@@ -11,6 +11,8 @@ import {
   Button,
   Text,
   Image,
+  VStack,
+  HStack,
 } from "@chakra-ui/react";
 
 function ModalAnime({ isOpen, onClose, animeId }) {
@@ -37,7 +39,7 @@ function ModalAnime({ isOpen, onClose, animeId }) {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Detalhes do Anime</ModalHeader>
@@ -48,13 +50,16 @@ function ModalAnime({ isOpen, onClose, animeId }) {
           ) : error ? (
             <Text color="red.500">{error}</Text>
           ) : anime ? (
-            <>
-              <Image src={anime.imagem} alt={anime.titulo} mb={4} />
-              <Text fontWeight="bold">Título: {anime.titulo}</Text>
-              <Text>Categoria: {anime.categoria}</Text>
-              <Text>Criador: {anime.criador}</Text>
-              <Text>Ano: {anime.ano}</Text>
-            </>
+            <VStack spacing={4} align="stretch">
+              <Image src={anime.imagem} alt={anime.titulo} objectFit="cover" maxHeight="300px" width="100%" />
+              <HStack justifyContent="space-between">
+                <Text fontWeight="bold" fontSize="xl">{anime.titulo}</Text>
+                <Text fontWeight="bold" color="blue.500">{anime.ano}</Text>
+              </HStack>
+              <Text><strong>Categoria:</strong> {anime.categoria}</Text>
+              <Text><strong>Criador:</strong> {anime.criador}</Text>
+              <Text><strong>Descrição:</strong> {anime.descricao || "Sem descrição disponível"}</Text>
+            </VStack>
           ) : (
             <Text>Nenhum detalhe disponível</Text>
           )}
@@ -70,3 +75,4 @@ function ModalAnime({ isOpen, onClose, animeId }) {
 }
 
 export default ModalAnime;
+

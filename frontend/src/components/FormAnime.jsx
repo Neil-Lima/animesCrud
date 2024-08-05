@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Box, Grid, Input, Button, Alert, AlertIcon } from "@chakra-ui/react";
+import { Box, Grid, Input, Button, Alert, AlertIcon, Container } from "@chakra-ui/react";
 
 const FormAnime = ({ onAnimeAdded }) => {
   const [formData, setFormData] = useState({
@@ -33,7 +33,7 @@ const FormAnime = ({ onAnimeAdded }) => {
         criador: '',
         ano: ''
       });
-      onAnimeAdded(); // Chama a função de callback após adicionar com sucesso
+      onAnimeAdded();
     } catch (error) {
       setMensagem('Erro ao adicionar anime: ' + error.message);
       setAlertVisible(true);
@@ -50,13 +50,13 @@ const FormAnime = ({ onAnimeAdded }) => {
   }, [alertVisible]);
 
   return (
-    <Box className="container" style={{ marginTop: "10px", padding: "20px" }}>
+    <Container maxWidth="container.xl" marginTop="10px" padding="20px">
       <form>
-        <Grid templateColumns="1fr 1fr" gap={4}>
+        <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={4}>
           <Input
             variant="filled"
             placeholder="Titulo"
-            bg="#dce0e1"
+            backgroundColor="#dce0e1"
             name="titulo"
             value={formData.titulo}
             onChange={handleInputChange}
@@ -64,7 +64,7 @@ const FormAnime = ({ onAnimeAdded }) => {
           <Input
             variant="filled"
             placeholder="Imagem"
-            bg="#dce0e1"
+            backgroundColor="#dce0e1"
             name="imagem"
             value={formData.imagem}
             onChange={handleInputChange}
@@ -72,7 +72,7 @@ const FormAnime = ({ onAnimeAdded }) => {
           <Input
             variant="filled"
             placeholder="Categoria"
-            bg="#dce0e1"
+            backgroundColor="#dce0e1"
             name="categoria"
             value={formData.categoria}
             onChange={handleInputChange}
@@ -80,7 +80,7 @@ const FormAnime = ({ onAnimeAdded }) => {
           <Input
             variant="filled"
             placeholder="Criador"
-            bg="#dce0e1"
+            backgroundColor="#dce0e1"
             name="criador"
             value={formData.criador}
             onChange={handleInputChange}
@@ -89,23 +89,23 @@ const FormAnime = ({ onAnimeAdded }) => {
             variant="filled"
             type="number"
             placeholder="Ano"
-            bg="#dce0e1"
+            backgroundColor="#dce0e1"
             name="ano"
             value={formData.ano}
             onChange={handleInputChange}
           />
         </Grid>
       </form>
-      <Button colorScheme="blue" mt="10px" type="button" onClick={handleAdicionarClick}>
+      <Button colorScheme="blue" marginTop="10px" type="button" onClick={handleAdicionarClick}>
         Adicionar
       </Button>
       {alertVisible && (
-        <Alert status={mensagem.includes('Erro') ? "error" : "success"} mt="4">
+        <Alert status={mensagem.includes('Erro') ? "error" : "success"} marginTop="4">
           <AlertIcon />
           {mensagem}
         </Alert>
       )}
-    </Box>
+    </Container>
   );
 };
 

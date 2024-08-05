@@ -10,10 +10,19 @@ import {
   SimpleGrid,
   Input,
   Container,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure
 } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { Pagination } from "react-bootstrap";
+import ModalAnime from "./ModalAnime";
 
 const CardAnime = ({ refreshTrigger }) => {
   const [dados, setDados] = useState([]);
@@ -23,6 +32,10 @@ const CardAnime = ({ refreshTrigger }) => {
   const [totalPaginas, setTotalPaginas] = useState(1);
   const [editando, setEditando] = useState(false);
   const [itemEditando, setItemEditando] = useState(null);
+  const [animeParaExcluir, setAnimeParaExcluir] = useState(null);
+  const [animeParaDetalhes, setAnimeParaDetalhes] = useState(null);
+  const { isOpen: isOpenExcluir, onOpen: onOpenExcluir, onClose: onCloseExcluir } = useDisclosure();
+  const { isOpen: isOpenDetalhes, onOpen: onOpenDetalhes, onClose: onCloseDetalhes } = useDisclosure();
 
   const fetchDados = async (pagina) => {
     try {
@@ -42,10 +55,16 @@ const CardAnime = ({ refreshTrigger }) => {
     fetchDados(paginaAtual);
   }, [paginaAtual, refreshTrigger]);
 
-  const excluirItem = async (id) => {
+  const confirmarExclusao = (anime) => {
+    setAnimeParaExcluir(anime);
+    onOpenExcluir();
+  };
+
+  const excluirItem = async () => {
     try {
-      await axios.delete(`https://animes-crud.vercel.app/api/animes/${id}`);
+      await axios.delete(`https://animes-crud.vercel.app/api/animes/${animeParaExcluir._id}`);
       fetchDados(paginaAtual);
+      onCloseExcluir();
     } catch (error) {
       console.error("Erro ao excluir item:", error);
     }
@@ -76,6 +95,11 @@ const CardAnime = ({ refreshTrigger }) => {
 
   const handleInputChange = (e) => {
     setItemEditando({ ...itemEditando, [e.target.name]: e.target.value });
+  };
+
+  const mostrarDetalhes = (anime) => {
+    setAnimeParaDetalhes(anime);
+    onOpenDetalhes();
   };
 
   return (
@@ -143,7 +167,7 @@ const CardAnime = ({ refreshTrigger }) => {
                         icon={<FontAwesomeIcon icon={faTrashAlt} />}
                         colorScheme="red"
                         marginRight={2}
-                        onClick={() => excluirItem(anime._id)}
+                        onClick={() => confirmarExclusao(anime)}
                         size="sm"
                       />
                       <IconButton
@@ -153,7 +177,9 @@ const CardAnime = ({ refreshTrigger }) => {
                         onClick={() => editarItem(anime)}
                         size="sm"
                       />
-                      <Button colorScheme="blue" size="sm">Mostrar Detalhes</Button>
+                      <Button colorScheme="blue" size="sm" onClick={() => mostrarDetalhes(anime)}>
+                        Mostrar Detalhes
+                      </Button>
                     </Flex>
                   </Flex>
                 )}
@@ -177,6 +203,25 @@ const CardAnime = ({ refreshTrigger }) => {
           <Pagination.Next disabled={paginaAtual === totalPaginas} onClick={() => setPaginaAtual(paginaAtual + 1)} />
         </Pagination>
       </Flex>
+
+      <Modal isOpen={isOpenExcluir} onClose={onCloseExcluir}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Confirmar Exclusão</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            Tem certeza que deseja excluir o anime "{animeParaExcluir?.titulo}"?
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="red" mr={3} onClick={excluirItem}>
+              Excluir
+            </Button>
+            <Button variant="ghost" onClick={onCloseExcluir}>Cancelar</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      <ModalAnime isOpen={isOpenDetalhes} onClose={onCloseDetalhes} animeId={animeParaDetalhes?._id} />
     </Container>
   );
 };
