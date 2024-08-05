@@ -27,7 +27,7 @@ const CardAnime = () => {
   const fetchDados = async (pagina) => {
     try {
       setCarregando(true);
-      const response = await axios.get(`http://localhost:3334/api/animes?page=${pagina}&limit=6`);
+      const response = await axios.get(`https://animes-crud.vercel.app/api/animes?page=${pagina}&limit=6`);
       setDados(response.data.data);
       setPaginaAtual(response.data.currentPage);
       setTotalPaginas(response.data.totalPages);
@@ -44,7 +44,7 @@ const CardAnime = () => {
 
   const excluirItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:3334/api/animes/${id}`);
+      await axios.delete(`https://animes-crud.vercel.app/api/animes/${id}`);
       fetchDados(paginaAtual);
     } catch (error) {
       console.error("Erro ao excluir item:", error);
@@ -58,7 +58,7 @@ const CardAnime = () => {
 
   const salvarItemEditado = async () => {
     try {
-      await axios.put(`http://localhost:3334/api/animes/${itemEditando.id}`, itemEditando);
+      await axios.put(`https://animes-crud.vercel.app/api/animes/${itemEditando._id}`, itemEditando);
       setEditando(false);
       setItemEditando(null);
       fetchDados(paginaAtual);
@@ -87,12 +87,12 @@ const CardAnime = () => {
       ) : (
         <Grid templateColumns="repeat(3, 1fr)" gap={6}>
           {dados.map((anime) => (
-            <GridItem key={anime.id} borderWidth="1px" rounded="md">
+            <GridItem key={anime._id} borderWidth="1px" rounded="md">
               <Box>
                 <Image src={anime.imagem} alt={`Imagem do anime ${anime.titulo}`} w="100%" height="250" d="block" />
                 <Box>
                   <Badge colorScheme="blue">{anime.categoria}</Badge>
-                  {editando && itemEditando?.id === anime.id ? (
+                  {editando && itemEditando?._id === anime._id ? (
                     <>
                       <Input
                         type="text"
@@ -147,7 +147,7 @@ const CardAnime = () => {
                         icon={<FontAwesomeIcon icon={faTrashAlt} />}
                         colorScheme="red"
                         mr={2}
-                        onClick={() => excluirItem(anime.id)}
+                        onClick={() => excluirItem(anime._id)}
                       />
                       <IconButton
                         icon={<FontAwesomeIcon icon={faPencilAlt} />}

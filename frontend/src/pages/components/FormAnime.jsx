@@ -23,7 +23,7 @@ const FormAnime = () => {
 
   const handleAdicionarClick = async () => {
     try {
-      const response = await axios.post('http://localhost:3334/api/animes', formData);
+      const response = await axios.post('https://animes-crud.vercel.app/api/animes', formData);
       setMensagem('Anime adicionado com sucesso!');
       setAlertVisible(true);
       setFormData({

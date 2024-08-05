@@ -1,0 +1,11 @@
+animescrud  /
+   backend/
+    config
+      database.js
+    controllers
+      animeController.js
+    models
+      animeModel.js   
+    routes
+      animeRoutes.js
+    index.js
