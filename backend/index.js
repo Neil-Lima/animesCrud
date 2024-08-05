@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3334;
 connectDB();
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://animescrud.netlify.app/', 'https://animes-crud.vercel.app'],
+  origin: ['http://localhost:3000', 'https://animescrud.netlify.app/', 'https://animes-crud.vercel.app/'],
   optionsSuccessStatus: 200
 };
 
