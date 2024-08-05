@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { Container, Pagination } from "react-bootstrap";
 
-const CardAnime = () => {
+const CardAnime = ({ refreshTrigger }) => {
   const [dados, setDados] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(null);
@@ -40,7 +40,7 @@ const CardAnime = () => {
 
   useEffect(() => {
     fetchDados(paginaAtual);
-  }, [paginaAtual]);
+  }, [paginaAtual, refreshTrigger]);
 
   const excluirItem = async (id) => {
     try {

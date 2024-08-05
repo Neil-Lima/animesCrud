@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Box, Grid, Input, Button, Alert, AlertIcon } from "@chakra-ui/react";
 
-const FormAnime = () => {
+const FormAnime = ({ onAnimeAdded }) => {
   const [formData, setFormData] = useState({
     titulo: '',
     imagem: '',
@@ -23,7 +23,7 @@ const FormAnime = () => {
 
   const handleAdicionarClick = async () => {
     try {
-      const response = await axios.post('https://animes-crud.vercel.app/api/animes', formData);
+      await axios.post('https://animes-crud.vercel.app/api/animes', formData);
       setMensagem('Anime adicionado com sucesso!');
       setAlertVisible(true);
       setFormData({
@@ -33,6 +33,7 @@ const FormAnime = () => {
         criador: '',
         ano: ''
       });
+      onAnimeAdded(); // Chama a função de callback após adicionar com sucesso
     } catch (error) {
       setMensagem('Erro ao adicionar anime: ' + error.message);
       setAlertVisible(true);
