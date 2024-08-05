@@ -75,4 +75,3 @@ function ModalAnime({ isOpen, onClose, animeId }) {
 }
 
 export default ModalAnime;
-

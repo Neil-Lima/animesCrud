@@ -45,3 +45,15 @@ exports.deleteAnime = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.getAnimeById = async (req, res) => {
+  try {
+    const anime = await Anime.findById(req.params.id);
+    if (!anime) {
+      return res.status(404).json({ message: 'Anime não encontrado' });
+    }
+    res.json(anime);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
